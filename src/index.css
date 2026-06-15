@@ -1,0 +1,381 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Color Palette - Figma Styled Neutral Dark with Electric Accents */
+  --bg-dark: 240 10% 3.9%;       /* #09090b (Figma Canvas Dark) */
+  --bg-obsidian: 240 10% 5.9%;   /* #0f0f11 */
+  --bg-card: 240 5.9% 10%;       /* #18181b (Figma Inspector Panel) */
+  --bg-card-hover: 240 5.9% 13%; /* #202024 */
+  
+  --primary: 150 84% 45%;        /* Electric Mint */
+  --primary-rgb: 16, 185, 129;
+  --secondary: 190 90% 46%;      /* Designer Cyan */
+  --secondary-rgb: 6, 182, 212;
+  
+  --accent-cyan: 190 90% 46%;
+  --accent-green: 150 84% 45%;
+  --accent-amber: 37 90% 51%;     /* Alert/Warning */
+  --accent-rose: 342 93% 53%;     /* Delete/Danger */
+  
+  --text-primary: 240 5.9% 95%;   /* Crisp Near-White */
+  --text-secondary: 240 5% 65%;   /* Muted Slate */
+  --text-muted: 240 4% 45%;       /* Dark Gray */
+  
+  --border-color: 240 5.9% 15%;   /* #27272a (Figma Panel Border) */
+  --border-glow: 150 84% 45% / 0.15;
+  
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'Space Grotesk', 'Courier New', monospace;
+  
+  --transition-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: hsl(var(--bg-dark));
+  color: hsl(var(--text-primary));
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* Figma Canvas Grid Background */
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--bg-dark));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border-color));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--text-muted));
+}
+
+/* Figma-Style Panels */
+.glass-panel {
+  background: hsl(var(--bg-card));
+  border: 1px solid hsl(var(--border-color));
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.glass-panel-interactive {
+  background: hsl(var(--bg-card));
+  border: 1px solid hsl(var(--border-color));
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.glass-panel-interactive:hover {
+  border-color: hsl(var(--primary) / 0.4);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  background: hsl(var(--bg-card-hover));
+}
+
+/* Text Styling */
+.text-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent-cyan)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Buttons (Figma design specs) */
+.btn-primary {
+  background: hsl(var(--primary));
+  color: #09090b;
+  border: none;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+  font-family: var(--font-sans);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  background: hsl(var(--border-color)) !important;
+  color: hsl(var(--text-muted)) !important;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: hsl(var(--text-primary));
+  border: 1px solid hsl(var(--border-color));
+  padding: 8px 16px;
+  font-weight: 500;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+  font-family: var(--font-sans);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: hsl(var(--text-secondary));
+}
+
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
+/* Form inputs & textareas (Figma Inspector Fields) */
+.form-input, .form-textarea {
+  background: hsl(var(--bg-obsidian));
+  border: 1px solid hsl(var(--border-color));
+  border-radius: 6px;
+  color: hsl(var(--text-primary));
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  outline: none;
+  transition: all var(--transition-fast);
+  width: 100%;
+}
+
+.form-input:focus, .form-textarea:focus {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 1px hsl(var(--primary));
+  background: hsl(var(--bg-card));
+}
+
+/* Card flip effects (Prep sheets) */
+.flip-card-container {
+  perspective: 1000px;
+  width: 100%;
+  height: 250px;
+}
+
+.flip-card {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+  position: relative;
+  cursor: pointer;
+}
+
+.flip-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flip-card-front {
+  background: hsl(var(--bg-card));
+  border: 1px solid hsl(var(--border-color));
+}
+
+.flip-card-back {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(6, 182, 212, 0.05) 100%);
+  border: 1px solid hsl(var(--primary) / 0.25);
+  transform: rotateY(180deg);
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes pulse-soft {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.3); }
+  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.pulse-mic {
+  animation: pulse-soft 2s infinite;
+}
+
+@keyframes ripple {
+  0% { transform: scale(0.97); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(0.97); opacity: 0.6; }
+}
+
+.audio-ripple {
+  animation: ripple 1.2s ease-in-out infinite;
+}
+
+/* Dashboard Score Circular Meter */
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* Layout helpers */
+.saas-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+
+@media (max-width: 968px) {
+  .saas-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sidebar {
+  border-right: 1px solid hsl(var(--border-color));
+  background: hsl(var(--bg-card));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 16px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+@media (max-width: 968px) {
+  .sidebar {
+    height: auto;
+    position: relative;
+    border-right: none;
+    border-bottom: 1px solid hsl(var(--border-color));
+    padding: 16px;
+  }
+}
+
+.main-content {
+  padding: 0; /* Changed to accommodate top bar exactly */
+  overflow-y: auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.workspace-canvas {
+  padding: 24px;
+  flex: 1;
+  overflow-y: auto;
+  max-width: 1500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .workspace-canvas {
+    padding: 16px;
+  }
+}
+
+/* Top Utility Bar styling */
+.top-utility-bar {
+  height: 48px;
+  background: hsl(var(--bg-card));
+  border-bottom: 1px solid hsl(var(--border-color));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  font-size: 12px;
+  z-index: 90;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .top-utility-bar {
+    padding: 0 16px;
+  }
+}
+
+/* Sidebar navigation buttons */
+.active-nav-btn {
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  border-left: 2px solid hsl(var(--primary)) !important;
+  border-radius: 0 4px 4px 0 !important;
+}
+
+.btn-secondary.active-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  transform: none !important;
+}
+
+/* Logo Glow Animation */
+@keyframes logo-glow {
+  0% { box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.1); }
+  50% { box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.3); }
+  100% { box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.1); }
+}
+
+.logo-glow-container {
+  animation: logo-glow 4s ease-in-out infinite;
+  border: 1px solid hsl(var(--border-color));
+}
